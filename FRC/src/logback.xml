@@ -1,0 +1,62 @@
+<configuration scan="true" scanPeriod="60 seconds">	  <!-- Auto Scan config file  -->
+ 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      		<level>info</level>	
+    	</filter>   
+    	<encoder>
+      		<pattern>[FRC]%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%file:%line] - %msg%n</pattern>
+    	</encoder>
+    </appender>
+ 
+    
+    <appender name="ERROR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>/home/todd/logs/frc/frc-error.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    		<fileNamePattern>/home/todd/logs/frc/frc-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>10</maxHistory>
+    	</rollingPolicy>
+    	<encoder>
+			<pattern>[FRC]%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level  [%thread] [%file:%line] - %msg%n</pattern>
+    	</encoder>
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      		<level>warn</level>		<!-- only log warn/error msg -->
+    	</filter>
+    </appender>
+
+	<appender name="NORMAL_LOG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/home/todd/logs/frc/frc.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home/todd/logs/frc/frc.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[FRC]%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level  [%thread] [%file:%line] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      		<level>info</level>	
+    	</filter>
+	</appender>
+    
+    <!-- #################################################################### -->
+    
+    <root level="debug">				<!-- level=trace/debug/info/warn/error/all/off -->
+    	<appender-ref ref="STDOUT" />
+    	<appender-ref ref="ERROR_LOG" />
+    	<appender-ref ref="NORMAL_LOG" />
+  	</root>
+  	
+  	
+  	<logger name="foo.bar" additivity="false">		<!-- only output to NORMAL_LOG -->
+  		<appender-ref ref="NORMAL_LOG" /> 	
+  	</logger>
+  	
+    <logger name="org.springframework" level="INFO"/>
+	
+	<root level="DEBUG">
+		<appender-ref ref="logfile"/>
+		<appender-ref ref="stdout"/>
+	</root>
+   
+</configuration>
