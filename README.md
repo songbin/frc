@@ -64,11 +64,22 @@
 </table>
 
 ## Archtecture of FRC
-moro info,can see the Docs.
+more infos,can see the Docs.
 
-## Usage
+## FRC Usage
++ For more infos,Please find it in Docs and default.proterties.
++ note: FRC doesn't support redis use password.
++ 1.FRC find redis by zookeeper.
++ 2.Redis have three state(1:Normal 2:del 3:add)
++ 3.Please follow belows to update redis info on zookeeper.
+  > create /frc/redis_1 {"redis_state":1,"redis_host":"127.0.0.1","redis_port":6381}<br/>
+  
+  /frc is the root path which FRC listen on zookeeper.<br/>
+  redis_1 is the redis name which you want to set.<br/>
+  
+## Client Usage
 You can use use the FRCClient to invoke the api of FRC.<br/>
-The way of invoking api as same sa jedis.<br/>
+The way of invoking api as same as jedis.<br/>
 The client has implement the object-pool with common-pool.<br/>
 e.g.<br/>
 >       FrcClient client = new FrcClient(host, port, timeout);
