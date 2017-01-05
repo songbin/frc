@@ -145,14 +145,6 @@ public class FrcServer implements FrcService.Iface {
     }
 
     @Override
-    public ResBool zadd(long logIndex, String caller, String key,
-	    Map<Double, String> scoreMembers, String ext) throws TException {
-	String flag = this.getClassName() + ".zadd";
-	FRCLogger.getInstance().info(logIndex, flag, "caller:{}  key:{}  scoreMembers:{} ext:{} ", null, caller, key, scoreMembers, ext);
-	return clusterCmd.zadd(logIndex, key, scoreMembers);
-    }
-
-    @Override
     public ResBool zaddmember(long logIndex, String caller, String key,
 	    double score, String member, String ext) throws TException {
 	String flag = this.getClassName() + ".zaddmember";
@@ -161,6 +153,14 @@ public class FrcServer implements FrcService.Iface {
     }
 
     @Override
+	public ResBool zadd(long logIndex, String caller, String key,
+			Map<String, Double> scoreMembers, String ext) throws TException {
+    	String flag = this.getClassName() + ".zadd";
+    	FRCLogger.getInstance().info(logIndex, flag, "caller:{}  key:{}  scoreMembers:{} ext:{} ", null, caller, key, scoreMembers, ext);
+    	return clusterCmd.zadd(logIndex, key, scoreMembers);
+	}
+
+	@Override
     public ResBool zrem(long logIndex, String caller, String key,
 	    List<String> members, String ext) throws TException {
 	String flag = this.getClassName() + ".zrem";

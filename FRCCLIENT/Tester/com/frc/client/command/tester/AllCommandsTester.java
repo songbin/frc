@@ -165,13 +165,13 @@ public class AllCommandsTester {
     public void zaddMapTester() {
 	String key = "test_zadd_map";
 	try {
-	    Map<Double, String> scoreMembers = new HashMap<Double, String>();
+	    Map<String, Double> scoreMembers = new HashMap<String, Double>();
 	    String member1 = "mem1";
 	    String member2 = "mem2";
 	    String member3 = "mem3";
-	    scoreMembers.put(1.2, member1);
-	    scoreMembers.put(2.2, member2);
-	    scoreMembers.put(3.2, member3);
+	    scoreMembers.put( member1, 1.2);
+	    scoreMembers.put( member2, 1.3);
+	    scoreMembers.put( member3, 1.4);
 	    
 	    FrcClient client = new FrcClient(host, port, timeout);
 	    

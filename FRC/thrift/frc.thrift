@@ -22,7 +22,7 @@ service FrcService
 	data_type.ResMapStrStr hgetAll(1:i64 logIndex, 2:string caller, 3:string key, 4:string ext),
 	data_type.ResListStr hmget(1:i64 logIndex, 2:string caller, 3:string key, 4:list<string> fields, 5:string ext),
 	data_type.ResBool hdel(1:i64 logIndex, 2:string caller, 3:string key, 4:string field, 5:string ext),
-	data_type.ResBool zadd(1:i64 logIndex, 2:string caller, 3:string key, 4:map<double, string> scoreMembers, 5:string ext),
+	data_type.ResBool zadd(1:i64 logIndex, 2:string caller, 3:string key, 4:map<string, double> scoreMembers, 5:string ext),
 	data_type.ResBool zaddmember(1:i64 logIndex, 2:string caller, 3:string key, 4:double score, 5:string member, 6:string ext),
 	data_type.ResBool zrem(1:i64 logIndex, 2:string caller, 3:string key, 4:list<string> members, 5:string ext),
 	data_type.ResSetStr zrange(1:i64 logIndex, 2:string caller, 3:string key, 4:i64 start, 5:i64 ends, 6:string ext),

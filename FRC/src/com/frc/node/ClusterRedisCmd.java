@@ -435,7 +435,7 @@ public class ClusterRedisCmd {
     }
 
     public ResBool zadd(long logIndex, String key,
-	    Map<Double, String> scoreMembers) {
+	    Map<String, Double> scoreMembers) {
 	String flag = this.getClassName() + ".zadd";
 	try {
 	    ResBool res = new ResBool();

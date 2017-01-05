@@ -209,7 +209,7 @@ public class FrcClient {
     }
     
     public boolean zadd(long logIndex, String key,
-	    Map<Double, String> scoreMembers, String ext) throws Exception {
+	    Map<String, Double> scoreMembers, String ext) throws Exception {
 	
 	String flag = this.getClassName() + ".zadd";
 	RpcClient<Client> client = this.pool.getObject();
