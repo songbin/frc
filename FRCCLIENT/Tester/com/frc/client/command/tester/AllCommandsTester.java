@@ -27,6 +27,7 @@ public class AllCommandsTester {
 	try {
 	    FrcClient client = new FrcClient(host, port, timeout);
 	    boolean ret = client.set(logIndex, key, value);
+		client.clear();
 	    if (ret) {
 		String val = client.get(logIndex, key);
 		if (!val.equals(value)) {
