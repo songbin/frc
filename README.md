@@ -80,19 +80,19 @@ more infos,can see the Docs.
 ## Client Usage
 At first, you can download frc-client by maven, below is the way to download:<br/>
 > <dependencies\><br/>
-> &emsp;&emsp;    <dependency\><br/>
-> &emsp;&emsp;&emsp;&emsp;        <groupId\>com.frc</groupId\><br/>
-> &emsp;&emsp;&emsp;&emsp;        <artifactId\>frc-client</artifactId\><br/>
-> &emsp;&emsp;        <version\>1.0.0</version\><br/>
+>     <dependency\><br/>
+>         <groupId\>com.frc</groupId\><br/>
+>         <artifactId\>frc-client</artifactId\><br/>
+>         <version\>1.0.0</version\><br/>
 >     </dependency\><br/>
 > 
 > </dependencies\><br/>
 > 
 > <repositories\><br/>
-> &emsp;&emsp;    <repository\><br/>
-> &emsp;&emsp;&emsp;&emsp;        <id\>songbin-frc-client</id\><br/>
-> &emsp;&emsp;&emsp;&emsp;        <url\>https://raw.github.com/songbin/frc/tree/master/FRCCLIENT</url\><br/>
-> &emsp;&emsp;    </repository\><br/>
+>     <repository\><br/>
+>         <id\>songbin-frc-client</id\><br/>
+>         <url\>https://raw.github.com/songbin/frc/tree/master/FRCCLIENT</url\><br/>
+>     </repository\><br/>
 > </repositories\><br/>
 
 You can use use the FRCClient to invoke the api of FRC.<br/>
