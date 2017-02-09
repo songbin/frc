@@ -79,21 +79,7 @@ more infos,can see the Docs.
   
 ## Client Usage
 At first, you can download frc-client by maven, below is the way to download:<br/>
-> 	<dependencies>
-> 		<dependency>
-> 			<groupId>com.frc</groupId>
-> 			<artifactId>frc-client</artifactId>
-> 			<version>1.0.0</version>
-> 		</dependency>
-> 
-> 	</dependencies>
-> 
-> 	<repositories>
-> 		<repository>
-> 			<id>songbin-frc-client</id>
-> 			<url>https://raw.github.com/songbin/frc/tree/master/FRCCLIENT</url>
-> 		</repository>
-> 	</repositories>
+ ![](https://raw.githubusercontent.com/songbin/frc/master/Docs/show.jpg)
 
 You can use use the FRCClient to invoke the api of FRC.<br/>
 The way of invoking api as same as jedis.<br/>
