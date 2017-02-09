@@ -1,0 +1,9 @@
+/bin/
+/FRCCLIENT/target/
+/FRCCLEINT/.idea/
+/FRCCLEINT/bin/
+/FRCCLIENT/FRCCLEINT.iml
+
+/FRC/target/
+/FRC/bin/
+//FRC/.idea/
