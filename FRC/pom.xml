@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.frc</groupId>
+    <artifactId>frc-proxy</artifactId>
+    <version>1.0.0</version>
+    <properties>
+        <profiles.src>src/main/java</profiles.src>
+        <profiles.dir>src/main/profiles</profiles.dir>
+        <jdk.version>1.7</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-client -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>16.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.thrift/libthrift -->
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
+
+    <!-- profiles 部署环境 -->
+    <profiles>
+        <!-- 打包开发机 -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <property>
+                    <name>wireless.dev</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>${jdk.version}</source>
+                            <target>${jdk.version}</target>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${profiles.dir}/dev/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <executions>
+                            <!-- 当执行mvn package时才会打包 -->
+                            <execution>
+                                <id>make-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+                <resources>
+                    <resource>
+                        <directory>${profiles.dir}/dev</directory>
+                    </resource>
+                </resources>
+
+            </build>
+        </profile>
+        <!-- 打包beta机 -->
+        <profile>
+            <id>beta</id>
+            <activation>
+                <property>
+                    <name>wireless.beta</name>
+                    <value>beta</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>${jdk.version}</source>
+                            <target>${jdk.version}</target>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${profiles.dir}/beta/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <executions>
+                            <!-- 当执行mvn package时才会打包 -->
+                            <execution>
+                                <id>make-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+                <resources>
+                    <resource>
+                        <directory>${profiles.dir}/beta</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <!-- 打包生产机 -->
+        <profile>
+            <id>prod</id>
+            <activation>
+                <property>
+                    <name>wireless.prod</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>${jdk.version}</source>
+                            <target>${jdk.version}</target>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${profiles.dir}/prod/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <executions>
+                            <!-- 当执行mvn package时才会打包 -->
+                            <execution>
+                                <id>make-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+                <resources>
+                    <resource>
+                        <directory>${profiles.dir}/prod</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+</project>
