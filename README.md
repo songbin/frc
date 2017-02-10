@@ -94,6 +94,11 @@ e.g.<br/>
 >       }
 >       client.clear();
 
+> ## Note ##
+> FrcClient can only been clear just once at a instance.<br/>
+> FrcClient.clear method will destroy all of objects in object-pool.<br/>
+> you can invoke clear method when you are to exit from the System.<br/>
+
 
 
 
