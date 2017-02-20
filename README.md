@@ -78,7 +78,7 @@ more infos,can see the Docs.
   redis_1 is the redis name which you want to set.<br/>
   
 ## Client Usage
-At first, you can download frc-client by maven, below is the way to download:<br/>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.frc</groupId>
