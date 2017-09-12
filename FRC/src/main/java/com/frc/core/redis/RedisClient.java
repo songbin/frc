@@ -344,8 +344,8 @@ public class RedisClient {
             res = 1 == ret ? true : false;
             jedisPool.returnResource(jds);
         } catch (Exception e) {
-            FRCLogger.getInstance().warn(logIndex, flag, "parameters: key {} score {} member {}",
-                e, key, score, member);
+            FRCLogger.getInstance().warn(logIndex, flag, "parameters: key {} score {} member {}", e,
+                key, score, member);
             res = false;
             jedisPool.returnBrokenResource(jds);
         }
@@ -815,7 +815,7 @@ public class RedisClient {
             return res;
         }
     }
-    
+
     public ScanResult<String> scan(long logIndex, int cursor) {
         String flag = getClassName() + ".scan";
 

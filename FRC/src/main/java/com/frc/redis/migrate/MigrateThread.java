@@ -132,8 +132,8 @@ public class MigrateThread implements Runnable {
     private void migrateAdd(RedisClient curr_client) {
         String flag = this.getClassName() + ".migrateAdd";
         try {
-            List<Long> nextList = ClusterAlgo
-                .getInstanceNext(logIndex, curr_client.getRedis_name());
+            List<Long> nextList = ClusterAlgo.getInstanceNext(logIndex,
+                curr_client.getRedis_name());
             if (null == nextList || nextList.isEmpty())
                 return;
             for (Long next_hash : nextList) {
@@ -191,8 +191,8 @@ public class MigrateThread implements Runnable {
                         continue;
 
                     String ret = curr_client.migrate(logIndex, key, next_cli);
-                    FRCLogger.getInstance().info(logIndex, flag, "ret:{}  source:{}  dest:{}",
-                        null, ret, JSONProvider.toJSONString(logIndex, curr_client),
+                    FRCLogger.getInstance().info(logIndex, flag, "ret:{}  source:{}  dest:{}", null,
+                        ret, JSONProvider.toJSONString(logIndex, curr_client),
                         JSONProvider.toJSONString(logIndex, next_cli));
                 }
 
